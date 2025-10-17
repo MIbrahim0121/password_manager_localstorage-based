@@ -104,7 +104,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-slate-50 p-6">
       <div className="max-w-4xl mx-auto">
-        {/* <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col sm:flex-row items-start gap-6">
+        <div className="bg-white rounded-2xl shadow-md border border-slate-200 p-6 flex flex-col sm:flex-row items-start gap-6">
           <div className="flex-1">
             <h2 className="text-2xl font-semibold text-slate-800">Welcome back</h2>
             <p className="mt-1 text-sm text-slate-600">Signed in as <span className="font-medium text-slate-800">{currentUser?.email}</span></p>
@@ -115,7 +115,7 @@ const Home = () => {
               Logout
             </button>
           </div>
-        </div> */}
+        </div>
 
         <main className="mt-6">
           <section className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">

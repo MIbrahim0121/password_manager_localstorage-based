@@ -11,9 +11,9 @@ const App = () => {
   return (
     <AuthProvider>
       <Routes>
-  {/* Public Routes */}
-  <Route path="/" element={<Login />} />
-  <Route path="/register" element={<Register />} />
+        {/* Public Routes */}
+        <Route path="/" element={<Register />} />
+        <Route path="/login" element={<Login />} />
 
         {/* This is a protected route, only logged-in users can see it */}
         <Route

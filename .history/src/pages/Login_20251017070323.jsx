@@ -1,15 +1,15 @@
-// src/pages/Register.jsx
+// src/pages/Login.jsx
 
 import { useState } from 'react'
 import { useAuth } from '../context/AuthContext'
 import { useNavigate, Link } from 'react-router-dom'
 
-const Register = () => {
+const Login = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
-  const { register } = useAuth()
+  const { login } = useAuth()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
@@ -17,10 +17,10 @@ const Register = () => {
     setError('')
     setLoading(true)
     try {
-      await register(email, password)
-      navigate('/login') // Redirect to login page after successful registration
+      await login(email, password)
+      navigate('/home') // Redirect to home on successful login
     } catch (err) {
-      setError(err?.message || 'Failed to register')
+      setError(err?.message || 'Failed to login')
     } finally {
       setLoading(false)
     }
@@ -30,8 +30,8 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-sky-50 p-6">
       <div className="max-w-md w-full bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg border border-slate-200 p-8">
         <header className="mb-6 text-center">
-          <h1 className="text-2xl font-semibold text-slate-800">Create your account</h1>
-          <p className="mt-1 text-sm text-slate-500">Securely store and manage your passwords.</p>
+          <h1 className="text-2xl font-semibold text-slate-800">Welcome back</h1>
+          <p className="mt-1 text-sm text-slate-500">Sign in to access your passwords securely.</p>
         </header>
 
         {error && (
@@ -59,7 +59,7 @@ const Register = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="Create a strong password"
+              placeholder="Your password"
               required
               className="mt-1 block w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-slate-700 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-sky-400"
             />
@@ -70,14 +70,14 @@ const Register = () => {
             disabled={loading}
             className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 hover:bg-sky-700 active:scale-95 px-4 py-2 text-white font-semibold shadow-sm transition-transform disabled:opacity-60"
           >
-            {loading ? 'Creating account...' : 'Create account'}
+            {loading ? 'Signing in...' : 'Sign in'}
           </button>
         </form>
 
         <div className="mt-6 text-center text-sm text-slate-600">
-          Already have an account?{' '}
-          <Link to="/login" className="text-sky-600 font-medium hover:underline">
-            Log in
+          Don&apos;t have an account?{' '}
+          <Link to="/" className="text-sky-600 font-medium hover:underline">
+            Create one
           </Link>
         </div>
       </div>
@@ -85,4 +85,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default Login

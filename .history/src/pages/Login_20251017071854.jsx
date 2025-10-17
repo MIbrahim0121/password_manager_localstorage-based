@@ -9,7 +9,7 @@ const Login = () => {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [pinExists, setPinExists] = useState(false)
-  const { setAppPin, loginWithPin } = useAuth()
+  const { setPin, loginWithPin } = useAuth()
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Login = () => {
     try {
       if (!pinExists) {
         // set the PIN (must be 6 digits)
-        await setAppPin(pin)
+        await setPin(pin)
         navigate('/home')
       } else {
         await loginWithPin(pin)
